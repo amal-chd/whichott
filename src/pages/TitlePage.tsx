@@ -6,8 +6,6 @@ import { useTVDetails } from '@/hooks/useTVDetails';
 import type { ContentType } from '@/lib/api/types';
 
 import { HeroSection } from '@/components/title/HeroSection';
-import { OTTAvailability } from '@/components/title/OTTAvailability';
-import { RatingsBar } from '@/components/title/RatingsBar';
 import { Overview } from '@/components/title/Overview';
 import { CastCrew } from '@/components/title/CastCrew';
 import { Trailers } from '@/components/title/Trailers';
@@ -49,7 +47,7 @@ export function TitlePage() {
   const posterUrl = data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '';
 
   return (
-    <div className="flex-1 pb-16">
+    <div className="flex-1 pb-8">
       <Helmet>
         <title>{title} — WhichOTT</title>
         <meta name="description" content={description} />
@@ -58,17 +56,11 @@ export function TitlePage() {
         {posterUrl && <meta property="og:image" content={posterUrl} />}
       </Helmet>
 
-      <HeroSection data={data} mediaType={mediaType as ContentType} />
-      
-      <OTTAvailability 
-        watchProviders={data['watch/providers']} 
-        title={title} 
-      />
-      
-      <RatingsBar 
-        tmdbRating={data.vote_average} 
-        tmdbVoteCount={data.vote_count} 
-        omdbRatings={omdbRatings} 
+      <HeroSection 
+        data={data} 
+        mediaType={mediaType as ContentType} 
+        omdbRatings={omdbRatings}
+        watchProviders={data['watch/providers']}
       />
       
       <Overview 
@@ -79,7 +71,6 @@ export function TitlePage() {
         country={data.production_countries?.[0]?.name}
         budget={(data as any).budget}
         revenue={(data as any).revenue}
-        genres={data.genres}
         keywords={(data as any).keywords?.keywords || (data as any).keywords?.results}
         releaseDate={isMovie ? (data as any).release_date : (data as any).first_air_date}
       />

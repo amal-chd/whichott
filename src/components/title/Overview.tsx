@@ -30,12 +30,12 @@ export function Overview({
   releaseDate
 }: OverviewProps) {
   return (
-    <div className="container mx-auto px-4 md:px-8 mt-12">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+    <div className="container mx-auto px-4 md:px-8 mt-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* Left Col: Overview & Tagline */}
-        <div className="lg:col-span-2 space-y-6">
-          <h2 className="text-2xl font-bold text-white">Storyline</h2>
+        <div className="lg:col-span-2 space-y-4">
+          <h2 className="text-xl font-bold text-white">Storyline</h2>
           
           {tagline && (
             <p className="text-xl italic font-light text-text-muted border-l-2 border-primary/50 pl-4">
@@ -43,21 +43,9 @@ export function Overview({
             </p>
           )}
           
-          <p className="text-lg leading-relaxed text-white/80">
+          <p className="text-base leading-relaxed text-white/80">
             {overview || "No overview available."}
           </p>
-
-          {/* Genres */}
-          {genres && genres.length > 0 && (
-            <div className="pt-4">
-              <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-3">Genres</h3>
-              <div className="flex flex-wrap gap-2">
-                {genres.map(genre => (
-                  <GenrePill key={genre.id} name={genre.name} />
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Keywords */}
           {keywords && keywords.length > 0 && (
