@@ -41,7 +41,7 @@ export function SportsPlayerPage() {
       </button>
 
       {/* Player Header Card */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-8 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 md:p-8 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-8">
         <div className="absolute top-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-[50px] -z-10" />
 
         {/* Player Avatar */}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, Search, X, User } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Search, User } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { SearchBar } from '../search/SearchBar';
 import { useAuth } from '@/context/AuthContext';
@@ -14,7 +14,6 @@ interface HeaderProps {
 
 export function Header({ transparent = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { user, logout } = useAuth();
   const { mode } = useMode();
@@ -53,7 +52,6 @@ export function Header({ transparent = false }: HeaderProps) {
             to="/" 
             className="flex-shrink-0"
             onClick={() => {
-              setIsMobileMenuOpen(false);
               if (location.pathname === '/') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
@@ -123,12 +121,6 @@ export function Header({ transparent = false }: HeaderProps) {
               </button>
             )}
 
-            <button 
-              className="md:hidden p-2 text-text-muted hover:text-white transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
         
@@ -139,30 +131,6 @@ export function Header({ transparent = false }: HeaderProps) {
           </div>
         )}
 
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="md:hidden bg-surface-dark border-t border-white/10 overflow-hidden"
-            >
-              <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-                <Link to="/new" className="text-lg font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>New</Link>
-                <Link to="/popular" className="text-lg font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Popular</Link>
-                <Link to="/trending" className="text-lg font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Trending</Link>
-                {user ? (
-                  <>
-                    <Link to="/watchlist" className="text-lg font-medium text-white" onClick={() => setIsMobileMenuOpen(false)}>Watchlist</Link>
-                    <button onClick={() => { logout(); setIsMobileMenuOpen(false); }} className="text-lg font-medium text-red-400 text-left">Sign Out</button>
-                  </>
-                ) : (
-                  <button onClick={() => { setIsAuthModalOpen(true); setIsMobileMenuOpen(false); }} className="text-lg font-medium text-white text-left">Sign In</button>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.header>
       
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />

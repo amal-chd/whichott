@@ -62,7 +62,8 @@ export function TrendingPage() {
               <div className="mt-4">
                 <Link 
                   to={`/title/${heroItem.media_type}/${heroItem.id}`}
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-black font-bold hover:bg-white/90 transition-colors"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-3 rounded-full bg-white text-black font-bold hover:bg-white/90 transition-colors"
                 >
                   View Details
                 </Link>

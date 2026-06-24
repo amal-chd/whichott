@@ -111,7 +111,7 @@ export function DiscoverPage() {
             "lg:w-72 flex-shrink-0 space-y-8",
             isSidebarOpen ? "block" : "hidden lg:block"
           )}>
-            <div className="glass border border-white/10 rounded-3xl p-6 sticky top-28 shadow-2xl shadow-black/50">
+            <div className="glass border border-white/10 rounded-3xl p-4 md:p-6 sticky top-28 shadow-2xl shadow-black/50">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-bold flex items-center gap-2"><SlidersHorizontal size={18} /> Filters</h2>
                 <button onClick={clearFilters} className="text-xs text-primary hover:text-primary-dark transition-colors font-medium">Reset</button>
@@ -268,7 +268,7 @@ export function DiscoverPage() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">No matches found</h3>
                 <p className="text-text-muted max-w-sm">Try adjusting your filters, genres, or selecting more streaming providers.</p>
-                <button onClick={clearFilters} className="mt-6 px-6 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary-dark transition-colors">
+                <button onClick={clearFilters} className="mt-6 px-4 py-2 md:px-6 md:py-2 bg-primary text-white rounded-full font-medium hover:bg-primary-dark transition-colors">
                   Clear All Filters
                 </button>
               </div>

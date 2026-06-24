@@ -43,7 +43,7 @@ export function SportsLeaguePage() {
       </button>
 
       {/* Header */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-8 shadow-2xl flex items-center gap-4">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 md:p-8 shadow-2xl flex items-center gap-4">
         <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center shadow-inner overflow-hidden p-2 border border-white/10 shrink-0">
           {league.logo && !isEmoji(league.logo) ? (
             <img src={league.logo} alt="" className="w-full h-full object-contain" referrerPolicy="no-referrer" />

@@ -95,7 +95,7 @@ export function HomePage() {
               />
             </AnimatePresence>
 
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white pb-2 drop-shadow-2xl">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white pb-2 drop-shadow-2xl">
               Which<span className={`bg-clip-text text-transparent bg-gradient-to-r transition-all duration-500 ${
                 isSports ? 'from-blue-500 to-cyan-400' : 'from-primary to-secondary'
               }`}>{isSports ? 'Sports' : 'OTT'}</span>

@@ -56,7 +56,7 @@ export function ReviewForm({ mediaId, mediaType, onReviewSubmitted }: ReviewForm
 
   if (!user) {
     return (
-      <div className="bg-surface-light border border-white/10 rounded-2xl p-6 text-center">
+      <div className="bg-surface-light border border-white/10 rounded-2xl p-4 md:p-6 text-center">
         <h3 className="text-lg font-bold text-white mb-2">Rate & Review</h3>
         <p className="text-text-muted mb-4">Sign in to leave a review and rate this title.</p>
         {/* We rely on the header sign in button or hero warning, but could add a button here */}

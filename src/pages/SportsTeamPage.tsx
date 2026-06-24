@@ -68,7 +68,7 @@ export function SportsTeamPage() {
       </button>
 
       {/* Team Header Panel */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-8 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 md:p-8 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="w-24 h-24 rounded-2xl bg-white/10 flex items-center justify-center shadow-inner overflow-hidden p-2 border border-white/10">
             {isEmoji(team.logo) ? (
@@ -153,7 +153,7 @@ export function SportsTeamPage() {
         <div className="col-span-1 lg:col-span-2">
           
           {activeTab === 'squad' && (
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 space-y-4">
               <h3 className="text-base font-bold text-white mb-2">Team Squad</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {team.squad.map((player) => (
@@ -223,7 +223,7 @@ export function SportsTeamPage() {
           )}
 
           {activeTab === 'stats' && (
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 space-y-4">
               <h3 className="text-base font-bold text-white mb-4">Season Stats Overview</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {Object.entries(team.stats).map(([label, value], i) => (

@@ -89,7 +89,7 @@ export function SportsMatchPage() {
       </button>
 
       {/* 1. SCOREBOARD (Visual Hero Element) */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-10 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 md:p-10 shadow-2xl">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
         
         {/* League and status header */}
@@ -304,7 +304,7 @@ export function SportsMatchPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="col-span-1 lg:col-span-2 space-y-6">
           {activeTab === 'timeline' && (
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-6">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 space-y-6">
               <h3 className="text-base font-bold text-white mb-2">Match Events Timeline</h3>
               
               {match.timeline.length === 0 ? (
@@ -382,7 +382,7 @@ export function SportsMatchPage() {
           )}
 
           {activeTab === 'stats' && (
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-6">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 space-y-6">
               <h3 className="text-base font-bold text-white mb-2">Match Statistics</h3>
               
               <div className="space-y-4">
@@ -424,7 +424,7 @@ export function SportsMatchPage() {
           )}
 
           {activeTab === 'lineups' && (
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-8">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 space-y-8">
               {!match.lineups ? (
                 <p className="text-sm text-text-muted text-center py-6">Rosters will be announced shortly.</p>
               ) : (
@@ -489,7 +489,7 @@ export function SportsMatchPage() {
         {/* Sidebar ads and insights */}
         <div className="space-y-6">
           {/* Fantasy Insight Card */}
-          <div className="bg-gradient-to-br from-indigo-950/40 via-purple-950/40 to-slate-900/60 border border-white/10 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+          <div className="bg-gradient-to-br from-indigo-950/40 via-purple-950/40 to-slate-900/60 border border-white/10 rounded-2xl p-4 md:p-6 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-yellow-500 text-black text-[9px] font-black uppercase px-2 py-0.5 rounded-bl-lg">
               PREMIUM
             </div>

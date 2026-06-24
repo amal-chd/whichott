@@ -65,7 +65,7 @@ export function HorizontalScroll({ title, children, showArrows = true, className
         <div 
           ref={scrollContainerRef}
           onScroll={checkScroll}
-          className="flex overflow-x-auto scrollbar-hide gap-4 px-4 md:px-8 pb-4 snap-x"
+          className="flex overflow-x-auto scrollbar-hide gap-4 px-4 md:px-8 pb-4 snap-x snap-mandatory"
         >
           {React.Children.map(children, (child) => (
             <div className="snap-start shrink-0">

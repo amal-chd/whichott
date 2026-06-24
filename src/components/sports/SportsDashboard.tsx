@@ -67,7 +67,7 @@ export function SportsDashboard() {
                 key={match.id}
                 whileHover={{ scale: 1.02 }}
                 onClick={() => handleMatchClick(match.id)}
-                className="cursor-pointer relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-blue-500/30 transition-all shadow-[0_4px_30px_rgba(0,0,0,0.5)] group"
+                className="cursor-pointer relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 hover:bg-white/10 hover:border-blue-500/30 transition-all shadow-[0_4px_30px_rgba(0,0,0,0.5)] group"
               >
                 {/* Glow Background */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity blur-xl rounded-full" />

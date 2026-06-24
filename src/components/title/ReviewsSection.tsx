@@ -42,7 +42,7 @@ export function ReviewsSection({ mediaId, mediaType }: ReviewsSectionProps) {
         <div className="w-full md:w-1/3 shrink-0">
           <h2 className="text-3xl font-extrabold text-white mb-6">User Reviews</h2>
           
-          <div className="bg-surface-light rounded-2xl p-6 mb-8 border border-white/10 flex items-center gap-6">
+          <div className="bg-surface-light rounded-2xl p-4 md:p-6 mb-8 border border-white/10 flex items-center gap-6">
             <div className="text-center">
               <div className="text-5xl font-extrabold text-white">{averageRating}</div>
               <div className="text-sm text-text-muted mt-1">out of 10</div>
@@ -71,7 +71,7 @@ export function ReviewsSection({ mediaId, mediaType }: ReviewsSectionProps) {
           {isLoading ? (
             <div className="space-y-6">
               {[...Array(3)].map((_, i) => (
-                <div key={i} className="bg-surface-light rounded-2xl p-6 animate-pulse">
+                <div key={i} className="bg-surface-light rounded-2xl p-4 md:p-6 animate-pulse">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-10 h-10 rounded-full bg-white/10" />
                     <div className="space-y-2">
@@ -84,7 +84,7 @@ export function ReviewsSection({ mediaId, mediaType }: ReviewsSectionProps) {
               ))}
             </div>
           ) : reviews.length === 0 ? (
-            <div className="bg-surface-light border border-white/10 rounded-2xl p-12 text-center h-full flex flex-col items-center justify-center">
+            <div className="bg-surface-light border border-white/10 rounded-2xl p-8 md:p-12 text-center h-full flex flex-col items-center justify-center">
               <Star size={48} className="text-white/20 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">No reviews yet</h3>
               <p className="text-text-muted">Be the first to review this title!</p>
@@ -92,7 +92,7 @@ export function ReviewsSection({ mediaId, mediaType }: ReviewsSectionProps) {
           ) : (
             <div className="space-y-6">
               {reviews.map(review => (
-                <div key={review.id} className="bg-surface-light rounded-2xl p-6 border border-white/5">
+                <div key={review.id} className="bg-surface-light rounded-2xl p-4 md:p-6 border border-white/5">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-white/10 overflow-hidden shrink-0">

@@ -117,7 +117,7 @@ export function HeroSection({ data, mediaType }: HeroSectionProps) {
             className="flex flex-col gap-4 text-center md:text-left"
           >
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight drop-shadow-lg">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight drop-shadow-lg">
                 {title}
               </h1>
               {showOriginalTitle && (
@@ -151,7 +151,7 @@ export function HeroSection({ data, mediaType }: HeroSectionProps) {
             {/* Action Buttons */}
             <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 mt-4">
               <button 
-                className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-white/90 transition-all hover:scale-105"
+                className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-white text-black font-bold rounded-full hover:bg-white/90 transition-all hover:scale-105"
                 onClick={() => {
                   const el = document.getElementById('trailers-section');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -167,7 +167,7 @@ export function HeroSection({ data, mediaType }: HeroSectionProps) {
                     disabled={isMutating}
                     onClick={handleWatchlistToggle}
                     className={cn(
-                      "flex items-center gap-2 px-6 py-3 font-bold transition-all border border-white/20",
+                      "flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 font-bold transition-all border border-white/20",
                       isInWatchlist 
                         ? "bg-primary/20 text-primary border-primary/30 hover:bg-primary/30 rounded-l-full" 
                         : "bg-surface-light text-white hover:bg-white/10 rounded-full"

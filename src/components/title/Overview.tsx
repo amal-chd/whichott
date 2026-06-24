@@ -75,7 +75,7 @@ export function Overview({
         </div>
 
         {/* Right Col: Metadata Grid */}
-        <div className="bg-white/5 rounded-2xl p-6 border border-white/10 h-fit">
+        <div className="bg-white/5 rounded-2xl p-4 md:p-6 border border-white/10 h-fit">
           <h3 className="text-lg font-bold text-white mb-6">Details</h3>
           
           <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">

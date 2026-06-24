@@ -33,7 +33,7 @@ export function RatingsBar({ tmdbRating, tmdbVoteCount, omdbRatings }: RatingsBa
 
   return (
     <div className="container mx-auto px-4 md:px-8 mt-12">
-      <div className="flex flex-wrap items-center gap-6 md:gap-12 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+      <div className="flex flex-wrap items-center gap-6 md:gap-12 p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
         
         {/* TMDB Rating */}
         <div className="flex items-center gap-4">
