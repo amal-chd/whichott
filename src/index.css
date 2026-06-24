@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* ── WhichOTT Theme ──────────────────────────────────────────── */
+
+@theme {
+  /* Colors */
+  --color-background: #000000;
+  --color-surface-dark: #0a0a0a;
+  --color-surface-light: #141414;
+  --color-surface-hover: #1a1a1a;
+  --color-border: rgba(255, 255, 255, 0.1);
+  
+  --color-primary: #C026D3;
+  --color-primary-dark: #9333EA;
+  --color-secondary: #2563EB;
+  
+  --color-text: #FFFFFF;
+  --color-text-muted: #9CA3AF;
+}
+
+/* ── WhichOTT Global Styles ──────────────────────────────────── */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #000000;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* ── Skeleton shimmer animation ──────────────────────────────── */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 1rem)); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(calc(-100% - 1rem)); }
+  to { transform: translateX(0); }
+}
+
+@utility animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+@utility animate-marquee-reverse {
+  animation: marquee-reverse 60s linear infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Custom Utility Classes ──────────────────────────────────── */
+
+/* Gradient text (used by logo) */
+.gradient-text {
+  background: linear-gradient(135deg, #C026D3, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-hover {
+  background: linear-gradient(135deg, #D946EF, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Backdrop gradient (hero/title pages) */
+.backdrop-gradient {
+  background: linear-gradient(
+    to top,
+    #000000 0%,
+    rgba(0, 0, 0, 0.95) 10%,
+    rgba(0, 0, 0, 0.7) 40%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+/* Glassmorphism effects */
+.glass-strong {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Primary glow (search bar focus, etc.) */
+.glow-primary {
+  box-shadow: 0 0 30px rgba(192, 38, 211, 0.15), 0 0 60px rgba(192, 38, 211, 0.05);
+}
+
+/* Hide scrollbar but allow scrolling */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for light sections */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.02);
+  }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
