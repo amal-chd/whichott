@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Check, Plus, MoreVertical } from 'lucide-react';
+import { Play, Check, Plus, MoreVertical, Share2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
@@ -54,6 +54,24 @@ export function HeroSection({ data, mediaType }: HeroSectionProps) {
     if (!user) return;
     setIsDropdownOpen(false);
     await updateStatus({ mediaId: id, status });
+  };
+
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `${title} on WhichOTT`,
+          text: `Check out ${title} on WhichOTT!`,
+          url: window.location.href,
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        // Fallback could use a toast notification if available
+        alert('Link copied to clipboard!');
+      }
+    } catch (error) {
+      console.log('Error sharing:', error);
+    }
   };
 
   const originalTitle = isMovie ? (data as TMDBMovie).original_title : (data as TMDBTVShow).original_name;
@@ -211,7 +229,17 @@ export function HeroSection({ data, mediaType }: HeroSectionProps) {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+            </div>
+
+            {/* Share Button */}
+            <button
+              onClick={handleShare}
+              className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-surface-light text-white hover:bg-white/10 rounded-full transition-all border border-white/20 shrink-0"
+              aria-label="Share"
+              title="Share"
+            >
+              <Share2 size={20} />
+            </button>
             </div>
 
           </motion.div>

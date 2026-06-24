@@ -23,6 +23,7 @@ const SportsMatchPage = React.lazy(() => import('@/pages/SportsMatchPage').then(
 const SportsTeamPage = React.lazy(() => import('@/pages/SportsTeamPage').then(module => ({ default: module.SportsTeamPage })));
 const SportsPlayerPage = React.lazy(() => import('@/pages/SportsPlayerPage').then(module => ({ default: module.SportsPlayerPage })));
 const SportsLeaguePage = React.lazy(() => import('@/pages/SportsLeaguePage').then(module => ({ default: module.SportsLeaguePage })));
+const ProfilePage = React.lazy(() => import('@/pages/ProfilePage').then(module => ({ default: module.ProfilePage })));
 
 function FullPageLoader() {
   return (
@@ -54,6 +55,7 @@ function App() {
                       <Route path="/popular" element={<DiscoverPage />} />
                       <Route path="/new" element={<NewPage />} />
                       <Route path="/watchlist" element={<WatchlistPage />} />
+                      <Route path="/profile" element={<ProfilePage />} />
                       <Route path="/sports/match/:id" element={<SportsMatchPage />} />
                       <Route path="/sports/team/:id" element={<SportsTeamPage />} />
                       <Route path="/sports/player/:id" element={<SportsPlayerPage />} />

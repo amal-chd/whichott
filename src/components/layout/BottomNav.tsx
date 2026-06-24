@@ -61,14 +61,20 @@ export function BottomNav() {
               <span className="text-[10px] font-medium">Sign In</span>
             </button>
           ) : (
-            <div className="flex flex-col items-center justify-center p-2 min-w-[64px] min-h-[44px] gap-1 text-primary cursor-pointer" onClick={() => setIsAuthModalOpen(true)}>
+            <NavLink
+              to="/profile"
+              className={({ isActive: linkActive }) => cn(
+                "flex flex-col items-center justify-center p-2 min-w-[64px] min-h-[44px] gap-1 transition-colors",
+                linkActive ? "text-primary" : "text-text-muted hover:text-white"
+              )}
+            >
               {user.photoURL ? (
                 <img src={user.photoURL} alt="Profile" className="w-5 h-5 rounded-full" />
               ) : (
                 <User size={20} />
               )}
               <span className="text-[10px] font-medium">Profile</span>
-            </div>
+            </NavLink>
           )}
         </div>
       </div>

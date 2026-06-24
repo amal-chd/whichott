@@ -107,6 +107,7 @@ export function Header({ transparent = false }: HeaderProps) {
                     </button>
                     <div className="absolute right-0 top-full mt-2 w-48 py-2 bg-surface-dark border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                       <Link to="/watchlist" className="block px-4 py-2 text-sm text-text-muted hover:text-white hover:bg-white/5">Watchlist</Link>
+                      <Link to="/profile" className="block px-4 py-2 text-sm text-text-muted hover:text-white hover:bg-white/5">Profile</Link>
                       <button onClick={logout} className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-400/10 transition-colors">Sign Out</button>
                     </div>
                   </div>

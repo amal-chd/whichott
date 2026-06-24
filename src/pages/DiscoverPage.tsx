@@ -3,8 +3,11 @@ import { useInView } from 'react-intersection-observer';
 import { useDiscover } from '@/hooks/useDiscover';
 import { useGenres } from '@/hooks/useGenres';
 import type { ContentType } from '@/lib/api/types';
+import { useProviders } from '@/context/ProviderContext';
+import { useCountry } from '@/context/CountryContext';
 import { MediaCard } from '@/components/ui/MediaCard';
 import { ProviderBar } from '@/components/ui/ProviderBar';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { Filter, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Helmet } from 'react-helmet-async';
@@ -21,6 +24,8 @@ export function DiscoverPage() {
   const [yearTo, setYearTo] = useState<string>('');
   const [monetization, setMonetization] = useState<string>('');
   const [certification, setCertification] = useState<string>('');
+  const { selectedProviders } = useProviders();
+  const { country } = useCountry();
 
   const { ref, inView } = useInView({ rootMargin: '400px' });
   const { data: genresData } = useGenres(mediaType);
@@ -34,8 +39,10 @@ export function DiscoverPage() {
     'first_air_date.gte': yearFrom ? `${yearFrom}-01-01` : undefined,
     'first_air_date.lte': yearTo ? `${yearTo}-12-31` : undefined,
     with_watch_monetization_types: monetization || undefined,
-    certification_country: certification ? 'US' : undefined,
+    certification_country: certification ? country : undefined,
     certification: certification || undefined,
+    with_watch_providers: selectedProviders.length > 0 ? selectedProviders.join('|') : undefined,
+    watch_region: selectedProviders.length > 0 ? country : undefined,
   };
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useDiscover(mediaType, filters);
@@ -258,7 +265,10 @@ export function DiscoverPage() {
             {isLoading ? (
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <div key={i} className="aspect-[2/3] rounded-xl bg-white/5 animate-shimmer" />
+                  <div key={i} className="flex flex-col gap-2">
+                    <Skeleton className="w-full aspect-[2/3] rounded-xl bg-white/5" />
+                    <Skeleton className="h-4 w-3/4 bg-white/5" />
+                  </div>
                 ))}
               </div>
             ) : data?.pages[0]?.results.length === 0 ? (
