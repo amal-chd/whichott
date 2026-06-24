@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, User } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Search, User, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { SearchBar } from '../search/SearchBar';
 import { useAuth } from '@/context/AuthContext';
@@ -14,6 +14,7 @@ interface HeaderProps {
 
 export function Header({ transparent = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { user, logout } = useAuth();
   const { mode } = useMode();
@@ -52,6 +53,7 @@ export function Header({ transparent = false }: HeaderProps) {
             to="/" 
             className="flex-shrink-0"
             onClick={() => {
+              setIsMobileMenuOpen(false);
               if (location.pathname === '/') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
@@ -79,6 +81,13 @@ export function Header({ transparent = false }: HeaderProps) {
             <Link to="/search" className="p-2 text-text-muted hover:text-white transition-colors md:hidden">
               <Search size={20} />
             </Link>
+            
+            <button 
+              className="md:hidden p-2 text-white hover:text-primary transition-colors z-50"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
             
             {user ? (
               <>
@@ -131,6 +140,64 @@ export function Header({ transparent = false }: HeaderProps) {
             <SearchBar variant="compact" />
           </div>
         )}
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-surface-dark border-t border-white/10 overflow-hidden"
+            >
+              <div className="px-4 py-6 flex flex-col gap-4">
+                <Link to="/new" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-white hover:text-primary transition-colors">New</Link>
+                <Link to="/popular" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-white hover:text-primary transition-colors">Popular</Link>
+                <Link to="/watchlist" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-white hover:text-primary transition-colors">Watchlist</Link>
+                <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-white hover:text-primary transition-colors">Profile</Link>
+                
+                <div className="h-px bg-white/10 my-2" />
+                
+                {user ? (
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden bg-white/20">
+                        {user.photoURL ? (
+                          <img src={user.photoURL} alt={user.displayName || 'User'} className="w-full h-full object-cover" />
+                        ) : (
+                          <User size={24} className="m-2 text-white" />
+                        )}
+                      </div>
+                      <div>
+                        <p className="font-medium text-white">{user.displayName || 'User'}</p>
+                        <p className="text-sm text-text-muted">{user.email}</p>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={() => {
+                        logout();
+                        setIsMobileMenuOpen(false);
+                      }} 
+                      className="w-full py-3 bg-red-500/10 text-red-500 font-medium rounded-xl hover:bg-red-500/20 transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                ) : (
+                  <button 
+                    onClick={() => {
+                      setIsAuthModalOpen(true);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary/90 transition-colors"
+                  >
+                    Sign In
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </motion.header>
       
