@@ -116,7 +116,7 @@ export function SportsMatchPage() {
         </div>
 
         {/* Scores & Team Details Grid */}
-        <div className="grid grid-cols-3 items-center justify-center text-center py-4">
+        <div className="grid grid-cols-3 gap-2 md:gap-4 items-center justify-center text-center py-4">
           
           {/* Home Team */}
           <div className="flex flex-col items-center gap-2">
@@ -173,8 +173,8 @@ export function SportsMatchPage() {
             )}
             
             {match.sport === 'basketball' && match.score.quarterScores && (
-              <div className="text-[10px] text-text-muted mt-3">
-                <table className="mx-auto">
+              <div className="text-[10px] text-text-muted mt-3 w-full overflow-x-auto custom-scrollbar">
+                <table className="mx-auto min-w-[max-content]">
                   <tbody>
                     <tr className="border-b border-white/5">
                       <td className="pr-2 font-bold">BOS</td>

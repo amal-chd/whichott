@@ -63,12 +63,12 @@ export function SportsLeaguePage() {
         
         {/* 1. STANDINGS TABLE */}
         <div className="col-span-1 lg:col-span-2 space-y-6">
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg overflow-x-auto">
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg w-full overflow-x-auto custom-scrollbar">
             <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2">
               <BarChart2 size={18} className="text-blue-400" /> League Standings
             </h3>
             
-            <table className="w-full text-left text-xs border-collapse">
+            <table className="w-full min-w-[max-content] text-left text-xs border-collapse">
               <thead>
                 <tr className="border-b border-white/10 text-text-muted font-bold uppercase tracking-wider text-[9px] pb-2">
                   <th className="py-2 px-1 text-center w-8">Pos</th>
